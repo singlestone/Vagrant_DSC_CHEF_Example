@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appcmd>
+    <APPPOOL APPPOOL.NAME="salesapi.carmax.local" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="salesapi.carmax.local" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="kmx\svcSalesWebApiDev" password="F&amp;W5AK53+dTW$M~gQiXGbbuMg" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="merchandisingapi.carmax.local" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="merchandisingapi.carmax.local" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="connect.carmax.local" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="connect.carmax.local" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="connect.carmax.local-appraisal" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="connect.carmax.local-appraisal" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="kmx\svcConnAPRWebDev" password="gNVeU4~JTbhovMjrP)sp@e~Qv" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="connect.carmax.local-hub-v1" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="connect.carmax.local-hub-v1" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="kmx\svcConnHubWebDev" password="q\{Kf+oo?7B6m})+*Q~zEUYRm" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="connect.carmax.local-start" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="connect.carmax.local-start" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="kmx\svcConnStartWebDev" password="R)[U8ke`bA`CnRG5?5}NmT4jN" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="connect.carmax.local-wrm" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="connect.carmax.local-wrm" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="kmx\svcConnWRMWebDev" password="gFNa&amp;Z!*JP#SYBcF`7pK2=K&amp;p" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="connect.carmax.local-hub-v2" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="connect.carmax.local-hub-v2" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="kmx\svcConnHubWebDev" password="q\{Kf+oo?7B6m})+*Q~zEUYRm" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="vehiclespecapi.carmax.local" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="vehiclespecapi.carmax.local" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="kmx\svcAPRVehSpecApiDev" password="g72K\p;PUk+:FG$ZAactyEaY8" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="rsa.carmax.local" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="rsa.carmax.local" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="KMX\svcGenRSAwebDev" password="nAmuWr$Chup#4eP+eFecrefEp" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+    <APPPOOL APPPOOL.NAME="mep.carmax.local" PipelineMode="Integrated" RuntimeVersion="v4.0" state="Started">
+        <add name="mep.carmax.local" autoStart="true" managedRuntimeVersion="v4.0">
+            <processModel identityType="SpecificUser" userName="Kmx\svcMepWebDev" password="YEPBe2D!NOTwmk.^d:}XW4@xp" />
+            <recycling>
+                <periodicRestart>
+                    <schedule>
+                    </schedule>
+                </periodicRestart>
+            </recycling>
+            <failure />
+            <cpu />
+        </add>
+    </APPPOOL>
+</appcmd>

@@ -1,0 +1,147 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.6.2"
+file_to_disk_srvr1 = './tmp/large_disk_srvr1.vdi'
+
+Vagrant.configure("2") do |config|
+
+	config.vm.define "adserver" do |adserver|
+	
+		adserver.vm.define "vagrant-windows-2012-r2"
+		adserver.vm.box = "windows_2012_r2_base_1"
+		adserver.vm.communicator = "winrm"
+
+		adserver.vm.hostname = "kmxsbdc01"
+		
+		# Admin user name and password
+		adserver.winrm.username = "vagrant"
+		adserver.winrm.password = "vagrant"
+	
+		adserver.vm.guest = :windows
+		adserver.windows.halt_timeout = 15
+
+		# forward RDP and WINRS ports
+		adserver.windows.set_work_network = true
+		adserver.winrm.max_tries = 10
+		adserver.vm.network "private_network", ip: "192.168.2.10", virtualbox__intnet: "DevNet1"
+		adserver.vm.network "private_network", ip: "192.168.3.10", virtualbox__intnet: "ISCSI"
+		adserver.vm.provider :virtualbox do |v, override|
+			v.customize ["modifyvm", :id, "--memory", 2048]
+			v.customize ["modifyvm", :id, "--vram", 64]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+			unless File.exist?(file_to_disk_srvr1)
+				v.customize ['createhd', '--filename', file_to_disk_srvr1, '--size', 80 * 1024]
+			end
+			v.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk_srvr1]
+		end
+	
+		adserver.vm.provision "shell" do |s|
+			s.path = "Scripts/Add_modules.ps1"		
+		end
+
+		adserver.vm.provision "shell" do |s|
+			s.path = "Scripts/Disk_config.ps1"
+		end
+	
+		adserver.vm.provision "shell" do |s|
+			s.path = "Scripts/ISCSI_Config.ps1"
+		end
+
+		adserver.vm.provision "shell" do |s|
+			s.path = "Scripts/Apply_DSC_MOF.ps1"
+		end
+	end
+	
+	config.vm.define "client01" do |client01|
+	
+		client01.vm.define "vagrant-windows-2012-r2"
+		client01.vm.box = "windows_2012_r2_base_1"
+		client01.vm.communicator = "winrm"
+		client01.vm.hostname = "genutl01s01"
+	
+		# Admin user name and password
+		client01.winrm.username = "vagrant"
+		client01.winrm.password = "vagrant"
+
+		client01.vm.guest = :windows
+		client01.windows.halt_timeout = 15
+
+		client01.windows.set_work_network = true
+		client01.winrm.max_tries = 10
+		client01.vm.network "private_network", ip: "192.168.2.50", virtualbox__intnet: "DevNet1"
+		client01.vm.network "private_network", ip: "192.168.2.60", virtualbox__intnet: "DevNet2"
+		client01.vm.network "private_network", ip: "192.168.3.20", virtualbox__intnet: "ISCSI"
+		client01.vm.provider :virtualbox do |v, override|
+			v.customize ["modifyvm", :id, "--memory", 2048]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["modifyvm", :id, "--vram", 64]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+	
+		client01.vm.provision "shell" do |s|
+			s.path = "Scripts/Nic_Config.ps1"
+		end
+	
+		client01.vm.provision "shell" do |s|
+			s.path = "Scripts/MSMQ_Install.ps1"
+		end	
+			
+		client01.vm.provision "shell" do |s|
+			s.path = "Scripts/ISCSI_Connect.ps1"
+		end
+
+		client01.vm.provision "shell" do |s|
+			s.path = "Scripts/JoinAD.ps1"
+		end	
+	end
+	
+	config.vm.define "client02" do |client02|
+	
+		client02.vm.define "vagrant-windows-2012-r2"
+		client02.vm.box = "windows_2012_r2_base_1"
+		client02.vm.communicator = "winrm"
+		client02.vm.hostname = "genutl01s02"
+	
+		# Admin user name and password
+		client02.winrm.username = "vagrant"
+		client02.winrm.password = "vagrant"
+
+		client02.vm.guest = :windows
+		client02.windows.halt_timeout = 15
+
+		# forward RDP and WINRS ports
+		client02.windows.set_work_network = true
+		client02.winrm.max_tries = 10
+		client02.vm.network "private_network", ip: "192.168.2.51", virtualbox__intnet: "DevNet1"
+		client02.vm.network "private_network", ip: "192.168.2.61", virtualbox__intnet: "DevNet2"
+		client02.vm.network "private_network", ip: "192.168.3.30", virtualbox__intnet: "ISCSI"
+		client02.vm.provider :virtualbox do |v, override|
+			v.customize ["modifyvm", :id, "--memory", 2048]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["modifyvm", :id, "--vram", 64]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+	
+		client02.vm.provision "shell" do |s|
+			s.path = "Scripts/Nic_Config.ps1"
+		end
+
+		client02.vm.provision "shell" do |s|
+			s.path = "Scripts/MSMQ_Install.ps1"
+		end	
+
+		client02.vm.provision "shell" do |s|
+			s.path = "Scripts/ISCSI_Connect.ps1"
+		end
+
+		client02.vm.provision "shell" do |s|
+			s.path = "Scripts/JoinAD.ps1"
+		end	
+		
+#		client02.vm.provision "shell" do |s|
+#			s.path = "Scripts/Domain_Admin_Exec.ps1"
+#		end	
+	end		
+end

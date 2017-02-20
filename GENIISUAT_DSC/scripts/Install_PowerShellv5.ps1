@@ -1,0 +1,1 @@
+Start-Process -FilePath C:\vagrant\software\Win8.1AndW2K12R2-KB3134758-x64.msu -ArgumentList '/quiet /norestart' -wait

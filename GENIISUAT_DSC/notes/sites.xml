@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appcmd>
+    <SITE SITE.NAME="salesapi.carmax.local" SITE.ID="18104" bindings="http/*:18104:,https/*:8104:" state="Stopped">
+        <site name="salesapi.carmax.local" id="18104" serverAutoStart="false">
+            <bindings>
+                <binding protocol="http" bindingInformation="*:18104:" />
+                <binding protocol="https" bindingInformation="*:8104:" />
+            </bindings>
+            <limits />
+            <logFile />
+            <traceFailedRequestsLogging />
+            <applicationDefaults />
+            <virtualDirectoryDefaults />
+            <ftpServer>
+                <connections />
+                <security>
+                    <dataChannelSecurity />
+                    <commandFiltering>
+                    </commandFiltering>
+                    <ssl />
+                    <sslClientCertificates />
+                    <authentication>
+                        <anonymousAuthentication />
+                        <basicAuthentication />
+                        <clientCertAuthentication />
+                        <customAuthentication>
+                            <providers>
+                            </providers>
+                        </customAuthentication>
+                    </authentication>
+                </security>
+                <customFeatures>
+                    <providers>
+                    </providers>
+                </customFeatures>
+                <messages />
+                <fileHandling />
+                <firewallSupport />
+                <userIsolation>
+                    <activeDirectory />
+                </userIsolation>
+                <directoryBrowse />
+                <logFile />
+            </ftpServer>
+            <application path="/" applicationPool="salesapi.carmax.local">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\salesapi.carmax.local" />
+                <virtualDirectory path="/lbcheck" physicalPath="D:\Keepalives\salesapi.carmax.local" />
+            </application>
+        </site>
+    </SITE>
+    <SITE SITE.NAME="merchandisingapi.carmax.local" SITE.ID="18105" bindings="http/*:18105:,https/*:8105:" state="Started">
+        <site name="merchandisingapi.carmax.local" id="18105" serverAutoStart="true">
+            <bindings>
+                <binding protocol="http" bindingInformation="*:18105:" />
+                <binding protocol="https" bindingInformation="*:8105:" />
+            </bindings>
+            <limits />
+            <logFile />
+            <traceFailedRequestsLogging />
+            <applicationDefaults />
+            <virtualDirectoryDefaults />
+            <ftpServer>
+                <connections />
+                <security>
+                    <dataChannelSecurity />
+                    <commandFiltering>
+                    </commandFiltering>
+                    <ssl />
+                    <sslClientCertificates />
+                    <authentication>
+                        <anonymousAuthentication />
+                        <basicAuthentication />
+                        <clientCertAuthentication />
+                        <customAuthentication>
+                            <providers>
+                            </providers>
+                        </customAuthentication>
+                    </authentication>
+                </security>
+                <customFeatures>
+                    <providers>
+                    </providers>
+                </customFeatures>
+                <messages />
+                <fileHandling />
+                <firewallSupport />
+                <userIsolation>
+                    <activeDirectory />
+                </userIsolation>
+                <directoryBrowse />
+                <logFile />
+            </ftpServer>
+            <application path="/" applicationPool="merchandisingapi.carmax.local">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\merchandisingapi.carmax.local" />
+                <virtualDirectory path="/lbcheck" physicalPath="D:\Keepalives\merchandisingapi.carmax.local" />
+            </application>
+        </site>
+    </SITE>
+    <SITE SITE.NAME="connect.carmax.local" SITE.ID="18106" bindings="http/*:18106:,https/*:8106:" state="Started">
+        <site name="connect.carmax.local" id="18106" serverAutoStart="true">
+            <bindings>
+                <binding protocol="http" bindingInformation="*:18106:" />
+                <binding protocol="https" bindingInformation="*:8106:" />
+            </bindings>
+            <limits />
+            <logFile />
+            <traceFailedRequestsLogging />
+            <applicationDefaults />
+            <virtualDirectoryDefaults />
+            <ftpServer>
+                <connections />
+                <security>
+                    <dataChannelSecurity />
+                    <commandFiltering>
+                    </commandFiltering>
+                    <ssl />
+                    <sslClientCertificates />
+                    <authentication>
+                        <anonymousAuthentication />
+                        <basicAuthentication />
+                        <clientCertAuthentication />
+                        <customAuthentication>
+                            <providers>
+                            </providers>
+                        </customAuthentication>
+                    </authentication>
+                </security>
+                <customFeatures>
+                    <providers>
+                    </providers>
+                </customFeatures>
+                <messages />
+                <fileHandling />
+                <firewallSupport />
+                <userIsolation>
+                    <activeDirectory />
+                </userIsolation>
+                <directoryBrowse />
+                <logFile />
+            </ftpServer>
+            <application path="/" applicationPool="connect.carmax.local">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\connect.carmax.local" />
+                <virtualDirectory path="/lbcheck" physicalPath="D:\Keepalives\connect.carmax.local" />
+            </application>
+            <application path="/appraisal" applicationPool="connect.carmax.local-appraisal">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\connect.carmax.local\appraisal" />
+            </application>
+            <application path="/hub/v1" applicationPool="connect.carmax.local-hub-v1">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\connect.carmax.local\hub\v1" />
+            </application>
+            <application path="/start" applicationPool="connect.carmax.local-start">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\connect.carmax.local\start" />
+            </application>
+            <application path="/wrm" applicationPool="connect.carmax.local-wrm">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\connect.carmax.local\wrm" />
+            </application>
+            <application path="/hub/v2" applicationPool="connect.carmax.local-hub-v2">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\connect.carmax.local\hub\v2" />
+            </application>
+        </site>
+    </SITE>
+    <SITE SITE.NAME="vehiclespecapi.carmax.local" SITE.ID="18107" bindings="http/*:18107:,https/*:8107:" state="Started">
+        <site name="vehiclespecapi.carmax.local" id="18107" serverAutoStart="true">
+            <bindings>
+                <binding protocol="http" bindingInformation="*:18107:" />
+                <binding protocol="https" bindingInformation="*:8107:" />
+            </bindings>
+            <limits />
+            <logFile />
+            <traceFailedRequestsLogging />
+            <applicationDefaults />
+            <virtualDirectoryDefaults />
+            <ftpServer>
+                <connections />
+                <security>
+                    <dataChannelSecurity />
+                    <commandFiltering>
+                    </commandFiltering>
+                    <ssl />
+                    <sslClientCertificates />
+                    <authentication>
+                        <anonymousAuthentication />
+                        <basicAuthentication />
+                        <clientCertAuthentication />
+                        <customAuthentication>
+                            <providers>
+                            </providers>
+                        </customAuthentication>
+                    </authentication>
+                </security>
+                <customFeatures>
+                    <providers>
+                    </providers>
+                </customFeatures>
+                <messages />
+                <fileHandling />
+                <firewallSupport />
+                <userIsolation>
+                    <activeDirectory />
+                </userIsolation>
+                <directoryBrowse />
+                <logFile />
+            </ftpServer>
+            <application path="/" applicationPool="vehiclespecapi.carmax.local">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\vehiclespecapi.carmax.local" />
+                <virtualDirectory path="/lbcheck" physicalPath="D:\Keepalives\vehiclespecapi.carmax.local" />
+            </application>
+        </site>
+    </SITE>
+    <SITE SITE.NAME="rsa.carmax.local" SITE.ID="18108" bindings="http/*:18108:,https/*:8108:" state="Started">
+        <site name="rsa.carmax.local" id="18108" serverAutoStart="true">
+            <bindings>
+                <binding protocol="http" bindingInformation="*:18108:" />
+                <binding protocol="https" bindingInformation="*:8108:" />
+            </bindings>
+            <limits />
+            <logFile />
+            <traceFailedRequestsLogging />
+            <applicationDefaults />
+            <virtualDirectoryDefaults />
+            <ftpServer>
+                <connections />
+                <security>
+                    <dataChannelSecurity />
+                    <commandFiltering>
+                    </commandFiltering>
+                    <ssl />
+                    <sslClientCertificates />
+                    <authentication>
+                        <anonymousAuthentication />
+                        <basicAuthentication />
+                        <clientCertAuthentication />
+                        <customAuthentication>
+                            <providers>
+                            </providers>
+                        </customAuthentication>
+                    </authentication>
+                </security>
+                <customFeatures>
+                    <providers>
+                    </providers>
+                </customFeatures>
+                <messages />
+                <fileHandling />
+                <firewallSupport />
+                <userIsolation>
+                    <activeDirectory />
+                </userIsolation>
+                <directoryBrowse />
+                <logFile />
+            </ftpServer>
+            <application path="/" applicationPool="rsa.carmax.local">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\rsa.carmax.local" />
+                <virtualDirectory path="/LBCheck" physicalPath="D:\Keepalives\rsa.carmax.local" />
+            </application>
+        </site>
+    </SITE>
+    <SITE SITE.NAME="mep.carmax.local" SITE.ID="18109" bindings="http/*:18109:,https/*:8109:" state="Started">
+        <site name="mep.carmax.local" id="18109" serverAutoStart="true">
+            <bindings>
+                <binding protocol="http" bindingInformation="*:18109:" />
+                <binding protocol="https" bindingInformation="*:8109:" />
+            </bindings>
+            <limits />
+            <logFile />
+            <traceFailedRequestsLogging />
+            <applicationDefaults />
+            <virtualDirectoryDefaults />
+            <ftpServer>
+                <connections />
+                <security>
+                    <dataChannelSecurity />
+                    <commandFiltering>
+                    </commandFiltering>
+                    <ssl />
+                    <sslClientCertificates />
+                    <authentication>
+                        <anonymousAuthentication />
+                        <basicAuthentication />
+                        <clientCertAuthentication />
+                        <customAuthentication>
+                            <providers>
+                            </providers>
+                        </customAuthentication>
+                    </authentication>
+                </security>
+                <customFeatures>
+                    <providers>
+                    </providers>
+                </customFeatures>
+                <messages />
+                <fileHandling />
+                <firewallSupport />
+                <userIsolation>
+                    <activeDirectory />
+                </userIsolation>
+                <directoryBrowse />
+                <logFile />
+            </ftpServer>
+            <application path="/" applicationPool="mep.carmax.local">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="D:\Websites\mep.carmax.local" />
+                <virtualDirectory path="/LBCheck" physicalPath="D:\Keepalives\mep.carmax.local" />
+            </application>
+        </site>
+    </SITE>
+</appcmd>

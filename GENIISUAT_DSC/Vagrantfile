@@ -1,0 +1,72 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.6.2"
+file_to_disk_srvr1 = './tmp/large_disk_srvr1.vdi'
+
+Vagrant.configure("2") do |config|
+    config.vm.define "vagrant-windows-2012-r2"
+    config.vm.box = "windows_2012_r2"
+    config.vm.communicator = "winrm"
+	config.vm.hostname = "geniis01u01"
+	config.vm.network "forwarded_port", host: 59101, guest: 3389
+	config.vm.network "forwarded_port", host: 59067, guest: 80
+	config.vm.network "forwarded_port", host: 4446, guest: 443
+		
+    # Admin user name and password
+    config.winrm.username = "vagrant"
+    config.winrm.password = "vagrant"
+	config.winrm.retry_limit = 30
+    config.winrm.retry_delay = 10
+	 config.vm.guest = :windows
+    config.windows.halt_timeout = 15
+
+	# forward RDP and WINRS ports
+	config.windows.set_work_network = true
+	config.winrm.max_tries = 10
+	
+	config.vm.network "private_network", ip: "192.168.2.45", virtualbox__intnet: "DevNet1"
+	
+	config.vm.provider :virtualbox do |v, override|
+		v.customize ["modifyvm", :id, "--memory", 2048]
+		v.customize ["modifyvm", :id, "--cpus", 2]
+		v.customize ["modifyvm", :id, "--vram", 64]
+		v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		unless File.exist?(file_to_disk_srvr1)
+			v.customize ['createhd', '--filename', file_to_disk_srvr1, '--size', 80 * 1024]
+		end
+			v.customize ['storageattach', :id, '--storagectl', 'IDE Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk_srvr1]
+	end
+	
+	config.vm.provision "shell" do |s|
+		s.path = "Scripts/Install_Chef.ps1"
+	end
+
+	config.vm.provision "shell" do |s|
+		s.path = "Scripts/Install_Gems.ps1"
+	end
+	
+	config.vm.provision "chef_solo" do |chef|
+		chef.add_recipe "powershellv5"
+	end
+
+	config.vm.provision "shell" do |s|
+		s.inline = "Restart-Computer -force"
+	end
+
+	config.vm.provision "chef_solo" do |chef|
+		chef.add_recipe "chef_dsc_setup"
+	end
+
+	config.vm.provision "shell" do |s|
+		s.inline = "Restart-Computer -force"
+	end
+	
+	config.vm.provision "chef_solo" do |chef|
+		chef.add_recipe "geniisuat"
+	end
+end
+
+
+  
+

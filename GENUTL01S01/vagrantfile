@@ -1,0 +1,41 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.6.2"
+
+
+Vagrant.configure("2") do |config|
+    config.vm.define "vagrant-windows-2012-r2"
+    config.vm.box = "windows_2012_r2_base_1"
+    config.vm.communicator = "winrm"
+	config.vm.network "forwarded_port", host: 59099, guest: 3389
+	config.vm.network "forwarded_port", host: 59066, guest: 80
+	config.vm.network "forwarded_port", host: 4444, guest: 443
+	config.vm.hostname = "genutl01s01"
+	
+	
+    # Admin user name and password
+    config.winrm.username = "vagrant"
+    config.winrm.password = "vagrant"
+
+    config.vm.guest = :windows
+    config.windows.halt_timeout = 15
+
+	# forward RDP and WINRS ports
+	#config.vm.network :forwarded_port, guest: 3389, host: 3308, id: "rdp", auto_correct: false
+	#config.vm.network :forwarded_port, guest: 5985, host: 5988, id: "winrm", auto_correct: true
+	config.windows.set_work_network = true
+	config.winrm.max_tries = 10
+	config.vm.network "private_network", ip: "192.168.2.50"
+    config.vm.provider :virtualbox do |v, override|
+        #v.gui = true
+        v.customize ["modifyvm", :id, "--memory", 2048]
+        v.customize ["modifyvm", :id, "--cpus", 2]
+        v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+    end
+	
+	config.vm.provision "shell" do |s|
+		s.path = "Nic_Config.ps1"
+	end	
+end
+
