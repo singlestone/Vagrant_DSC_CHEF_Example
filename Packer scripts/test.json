@@ -1,0 +1,27 @@
+[{
+  "description": "Windows 7 Enterprise Edition x64 (with WinRm)",
+  "short_description": "Windows 7 Enterprise Edition x64 (bare installation, but with latest updates)",
+  "name": "online/Win7BaseBox",
+  "versions": [
+      {
+          "version": "0.1.0",
+          "status": "active",
+          "providers": [
+              {
+                  "name": "virtualbox",
+                  "url": "http://1ITC3A315.KMX.LOCAL/Win7BaseBox.box"
+              }
+          ]
+        },
+        {
+            "version": "0.1.1",
+            "status": "active",
+            "providers": [
+                {
+                    "name": "virtualbox",
+                    "url": "http://1ITC3A315.KMX.LOCAL/Win7BaseBox-0.1.1.box"
+                }
+            ]
+          }
+      ]
+}]
